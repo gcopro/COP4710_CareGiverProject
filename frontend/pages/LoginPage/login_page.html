@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Caregiver Community</title>
+    <link rel="stylesheet" href="style_login_page.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome Back to Caregiver Community</h1>
+        </div>
+    </header>
+
+    <!-- Login Form Section -->
+    <section class="login-section">
+        <div class="container">
+            <form id="loginForm" action="backend/login" method="POST"> <!-- Backend action will handle this -->
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <!-- Error Message Section (placeholder for backend response) -->
+                <div id="error-message" class="error-message">
+                    <!-- This will display an error message from the backend, e.g. "Invalid email or password" -->
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="cta-button">Log In</button>
+                    <p>Don't have an account? <a href="/COP4710_CareGiverProject/frontend/pages/SignUpPage/sign_up_page.html">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>

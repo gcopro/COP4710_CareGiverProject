@@ -1,0 +1,144 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f9fc; /* Light, soothing background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 10px; /* Added small padding for mobile responsiveness */
+    margin: 0; /* Remove default margin */
+}
+
+/* Main Flex Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Max width to avoid the elements being too wide */
+    gap: 40px; /* Gap between welcome message and login form */
+    margin-right: 30px;
+}
+
+/* Welcome Message Section */
+.welcome-message {
+    text-align: left;
+    max-width: 500px; /* Limit the width of the welcome message */
+}
+
+.welcome-message h1 {
+    font-size: 3rem;
+    color: #2a3d47; /* Darker shade for contrast */
+}
+
+.welcome-message p {
+    font-size: 1.2rem;
+    color: #4a5b61; /* Soft grayish blue for a calm tone */
+    margin-bottom: 30px;
+}
+
+/* Login Form Section */
+.login-section {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #2a3d47; /* Darker text for headings */
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+.input-group input:focus {
+    border-color: #6ec1e4; /* Soft teal for focus state */
+    outline: none;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Form Actions Section */
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-button {
+    background-color: #6ec1e4; /* Soft teal for the primary button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.cta-button:hover {
+    background-color: #57a8c7; /* Slightly darker blue for hover effect */
+}
+
+p {
+    font-size: 1rem;
+    color: #333;
+}
+
+a {
+    color: #6ec1e4; /* Soft teal for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1rem;
+    color: #666;
+}

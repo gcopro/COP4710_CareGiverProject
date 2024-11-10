@@ -1,14 +1,14 @@
-Final Project - COP4710
+## Final Project - COP4710
 
 Gavin Cruz\
 Dodge Holmbeck\
 Keola McGowan
 
 Goal: website for people to find caregivers for their parents
-	- nursing registry for elderly
-	- database for nurses and clients
+- nursing registry for elderly
+- database for nurses and clients
 
-Requirements:
+### Requirements:
 - To use service, a member must sign up
 - the currency is care dollar to buy or request services
 	- nurses/caregivers requests have prices
@@ -24,8 +24,8 @@ Requirements:
 - upon sign up, a member is given 2000 care dollars (only clients not nurses)
 
 
-Database:
-Entities:
+### Database:
+**Entities:**
 - user: nurse, client
 	- memberID (primary key)
 	- full name
@@ -58,7 +58,7 @@ Entities:
 	- rating score (float of 1-5) "can either be 1 - 1.5 - 2 - 2.5 ...
 	- review comment: str
 
-Relationships:
+**Relationships:**
 - User - ISA - nurse and client
 - client - patient: (one-to-many)
 	- a client can have more than 1 parent
