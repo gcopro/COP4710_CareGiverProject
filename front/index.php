@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caregiver Community</title>
-    <link rel="stylesheet" href="style_front_page.css">
+    <link rel="stylesheet" href="/COP4710_CareGiverProject/front/styling/style_front_page.css">
 </head>
 <body>
     <!-- Header Section -->
@@ -14,8 +14,8 @@
                 <h1>Caregiver Community</h1>
             </div>
             <div class="nav-links">
-                <a href="/COP4710_CareGiverProject/frontend/pages/LoginPage/login_page.html" class="secondary-button">Login</a>
-                <a href="/COP4710_CareGiverProject/frontend/pages/SignUpPage/sign_up_page.html" class="cta-button">Sign Up</a>
+                <a href="/COP4710_CareGiverProject/front/pages/login.php" class="secondary-button">Login</a>
+                <a href="/COP4710_CareGiverProject/front/pages/signup.php" class="cta-button">Sign Up</a>
             </div>
         </div>
     </header>

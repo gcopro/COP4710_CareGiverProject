@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | Caregiver Community</title>
-    <link rel="stylesheet" href="style_sign_up.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="/COP4710_CareGiverProject/front/styling/style_sign_up.css"> <!-- Link to your CSS file -->
 </head>
 <body>
     <header>
