@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Nov 30, 2024 at 11:00 AM
+=======
+-- Generation Time: Nov 28, 2024 at 02:34 AM
+>>>>>>> 02b421bd13d30e65fe6c21b5033e791cf19fff47
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,11 +34,25 @@ SET time_zone = "+00:00";
 CREATE TABLE `caregiver` (
   `CID` int(11) NOT NULL,
   `MID` int(11) NOT NULL,
+<<<<<<< HEAD
   `ableHours` int(11) NOT NULL,
   `Rate` decimal(5,2) DEFAULT 0.00,
   `limitHours` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+=======
+  `Availble_hours_per_week` int(11) NOT NULL,
+  `Rate` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `caregiver`
+--
+
+INSERT INTO `caregiver` (`CID`, `MID`, `Availble_hours_per_week`, `Rate`) VALUES
+(1, 1, 40, 0);
+
+>>>>>>> 02b421bd13d30e65fe6c21b5033e791cf19fff47
 -- --------------------------------------------------------
 
 --
@@ -48,6 +66,7 @@ CREATE TABLE `contracts` (
   `PID` int(11) NOT NULL,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
+<<<<<<< HEAD
   `transactions` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `hrs` int(11) NOT NULL
@@ -155,6 +174,18 @@ CREATE TRIGGER `validHours` BEFORE INSERT ON `contracts` FOR EACH ROW BEGIN
 END
 $$
 DELIMITER ;
+=======
+  `earnedCD` int(11) NOT NULL,
+  `spentCD` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `contracts`
+--
+
+INSERT INTO `contracts` (`Cno`, `MID`, `CID`, `PID`, `startDate`, `endDate`, `earnedCD`, `spentCD`) VALUES
+(1, 1, 1, 1, '2024-11-01', '2024-11-30', 500, 30);
+>>>>>>> 02b421bd13d30e65fe6c21b5033e791cf19fff47
 
 -- --------------------------------------------------------
 
@@ -164,6 +195,7 @@ DELIMITER ;
 
 CREATE TABLE `member` (
   `MID` int(11) NOT NULL,
+<<<<<<< HEAD
   `firstName` varchar(50) NOT NULL,
   `lastName` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -173,6 +205,22 @@ CREATE TABLE `member` (
   `CDbalance` int(11) DEFAULT 2000
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+=======
+  `NAME` varchar(50) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
+  `Address` varchar(50) NOT NULL,
+  `PASSWORD` varchar(30) NOT NULL,
+  `CDbalance` int(11) NOT NULL DEFAULT 2000
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`MID`, `NAME`, `Phone`, `Address`, `PASSWORD`, `CDbalance`) VALUES
+(1, 'AMAMAMAS', '1234567890', '123 Main St', 'password123', 2000);
+
+>>>>>>> 02b421bd13d30e65fe6c21b5033e791cf19fff47
 -- --------------------------------------------------------
 
 --
@@ -187,6 +235,16 @@ CREATE TABLE `parent` (
   `Address` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+<<<<<<< HEAD
+=======
+--
+-- Dumping data for table `parent`
+--
+
+INSERT INTO `parent` (`PID`, `MID`, `NAME`, `Age`, `Address`) VALUES
+(1, 1, 'Parent One', 65, '456 Target St');
+
+>>>>>>> 02b421bd13d30e65fe6c21b5033e791cf19fff47
 -- --------------------------------------------------------
 
 --
@@ -200,6 +258,7 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
+<<<<<<< HEAD
 -- Triggers `review`
 --
 DELIMITER $$
@@ -229,6 +288,24 @@ CREATE TRIGGER `validRate` BEFORE INSERT ON `review` FOR EACH ROW BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'RATE 1 - 5';
     END IF;
+=======
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`Rno`, `Cno`, `Rate`) VALUES
+(1, 1, 3),
+(2, 1, 3);
+
+--
+-- Triggers `review`
+--
+DELIMITER $$
+CREATE TRIGGER `validRate` BEFORE INSERT ON `review` FOR EACH ROW BEGIN
+    IF NEW.Rate < 1 OR NEW.Rate > 5 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'RATE 1 - 5';
+    END IF;
+>>>>>>> 02b421bd13d30e65fe6c21b5033e791cf19fff47
 END
 $$
 DELIMITER ;
@@ -287,25 +364,41 @@ ALTER TABLE `caregiver`
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
+<<<<<<< HEAD
   MODIFY `Cno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+=======
+  MODIFY `Cno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+>>>>>>> 02b421bd13d30e65fe6c21b5033e791cf19fff47
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
+<<<<<<< HEAD
   MODIFY `MID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+=======
+  MODIFY `MID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+>>>>>>> 02b421bd13d30e65fe6c21b5033e791cf19fff47
 
 --
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
+<<<<<<< HEAD
   MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+=======
+  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+>>>>>>> 02b421bd13d30e65fe6c21b5033e791cf19fff47
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
+<<<<<<< HEAD
   MODIFY `Rno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+=======
+  MODIFY `Rno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+>>>>>>> 02b421bd13d30e65fe6c21b5033e791cf19fff47
 
 --
 -- Constraints for dumped tables
