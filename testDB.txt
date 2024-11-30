@@ -1,0 +1,53 @@
+INSERT INTO member ( MID, firstName, lastName, email, password, phone, address, Cdbalance)
+VALUES
+(1, 'a', 'a', 'a@yahoo.com', '@A',  '407 -1', '123 a st', 2000),
+(2, 'b', 'b', 'b@gmail.com', '@B', '407-2', '456 b st', 2000),
+(3, 'c', 'c', 'c@outlook.com', '@C', '407-3', '789 c st', 2000),
+(4, 'd', 'd', 'd@yahoo.com', '@D', '407 -4', '321 d st', 2000),
+(5, 'e', 'e', 'e@gmail.com', '@E', '407-5', '654 e st',  2000),
+(6, 'f', 'f', 'f@outlook.com', '@F', '407-6', '789 f st', 2000);
+
+INSERT INTO parent (PID, MID, NAME, Age, Address)
+VALUES
+(1, 1, 'parent a', 67, '123 pa st'),
+(2, 2, 'parent b', 67, '456 pb st'),
+(3, 3, 'parent c', 67, '789 pc st'),
+(4, 4, 'parent d', 67, '1011 pd st'),
+(5, 5, 'parent e', 67, '1213 pe st'),
+(6, 6, 'parent f', 67, '1415 pf st');
+
+INSERT INTO caregiver (CID, MID, limitHours, ableHours)
+VALUES
+(1, 1, 40,40);
+
+INSERT INTO contracts (Cno, MID, CID, PID, startDate, endDate,hrs,status,transactions)
+VALUES
+(1, 2, 1, 2, '2024-11-27', '2024-11-28', 8, 0, 100),
+(2, 3, 1, 3, '2024-11-27', '2024-11-28', 32, 0, 200),
+(3, 4, 1, 4, '2024-11-27', '2024-11-28', 8, 0, 100),
+(4, 5, 1, 5, '2024-11-27', '2024-11-28', 32, 0, 200),
+(5, 6, 1, 6, '2024-11-27', '2024-11-28', 8, 0, 100),
+(6, 7, 1, 7, '2024-11-27', '2024-11-28', 32, 0, 200);
+
+INSERT INTO review (Rno, Cno, Rate)
+VALUES
+(1, 1, 3),
+(2, 2, 3),
+(3, 3, 3),
+(4, 4, 3),
+(5, 5, 4),
+(6, 6, 4);
+
+
+------------- set status to 1 after contract is made----------
+UPDATE contracts 
+SET status = 1
+WHERE Cno = 1;
+
+
+------------ RESET THE DB -------------------------------------
+DELETE FROM review;
+DELETE FROM contracts;
+DELETE FROM parent;
+DELETE FROM caregiver;
+DELETE FROM member;
