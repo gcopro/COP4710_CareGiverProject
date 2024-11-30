@@ -1,6 +1,6 @@
 <?php
 //connection to DB
-include 'db.php';
+include 'db.php'; //set its path to db.php (connection)
 
 // set name fields and POST data
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -9,9 +9,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = $_POST['email'];
     $password  = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
-
-    //DEBUG
-    print_r($_POST); 
 
     // make all everything is inputted
     if(empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($confirmPassword) ){
@@ -28,15 +25,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         VALUES(?,?,?,?);
     ";
 
-    // DEBUGG
-    $sql = "INSERT INTO member (firstName, lastName, email, password) VALUES ('test', 'user', 'test@example.com', 'testpass')";
-    if ($con->query($sql) === TRUE) {
-        echo "Test data inserted successfully";
-    } else {
-        echo "Error: " . $con->error;
-    }
-
-
     //prepare statment
     $stmt = $con->prepare($sql);
     //error check : connection
@@ -45,7 +33,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $stmt->bind_param("ssss",$firstName,$lastName,$email,$hashPass);
     // Execute the statement
     if ($stmt->execute()) {
-        header("Location: login_page.html");
+        echo "success";
+        //header("Location: http/localhost/index_web/COP4710_CareGiverProject/frontend/pages/LoginPage/login_page.html");
     } else {
         echo "Error: " . $stmt->error;
     }
