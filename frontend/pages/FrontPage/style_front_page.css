@@ -13,11 +13,11 @@ body, html {
     margin: auto;
 }
 
-/* General Header Styling */
+/* Header */
 header {
     background-color: #6ec1e4;
     color: white;
-    padding: 10px 0 10px;
+    padding: 10px 0;
     text-align: center;
 }
 
@@ -33,7 +33,6 @@ header {
     font-size: 1.8rem;
     color: white;
     margin: 0;
-    text-align: center;
 }
 
 .nav-links {
@@ -76,7 +75,7 @@ header {
 @media (max-width: 768px) {
     .nav-bar {
         flex-direction: column;
-        height: auto; /* Adjusts for smaller screens */
+        height: auto;
     }
 
     .nav-links {
@@ -89,7 +88,61 @@ header {
     }
 }
 
+/* Dashboard Layout */
+.dashboard-layout {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
 
+.filters-and-listings {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-section {
+    flex: 1;
+    background-color: #e1f3f7; /* Updated color */
+    color: #2a3d47; /* Text color for contrast */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #2a3d47;
+}
+
+.dashboard-card p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.dashboard-card button {
+    background-color: #6ec1e4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.dashboard-card button:hover {
+    background-color: #57a8c7;
+}
 
 /* Job Listings */
 .job-postings {
@@ -98,10 +151,12 @@ header {
 }
 
 .filter-bar {
-    background-color: #e1f3f7; /* Light blue background for filter bar */
+    background-color: #e1f3f7; /* Updated color */
+    color: #2a3d47; /* Text color for contrast */
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 40px;
+    margin-right: 10px;
 }
 
 .filter-group {
@@ -111,7 +166,7 @@ header {
 .filter-group label {
     font-size: 1rem;
     margin-bottom: 5px;
-    color: #2a3d47; /* Darker text for readability */
+    color: #2a3d47;
 }
 
 .filter-group input,
@@ -136,22 +191,21 @@ button {
 /* Scrollable Job List */
 .scrollable-jobs {
     margin-top: 40px;
-    max-height: 700px; /* Set a max height */
-    overflow-y: auto;  /* Enable vertical scrolling */
-    padding-right: 10px; /* Add space for scrollbar */
-    width: 100%; /* Fill the x direction of the page */
-    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    max-height: 700px;
+    overflow-y: auto;
+    padding-right: 10px;
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the content horizontally */
+    align-items: center;
 }
 
-/* Ensuring the job cards are displayed in a grid */
 .job-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center; /* Center the job cards horizontally */
+    justify-content: center;
     width: 100%;
 }
 
@@ -162,17 +216,16 @@ button {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     flex: 1 1 calc(33% - 20px);
     box-sizing: border-box;
-    max-width: 320px; /* Limit card width */
+    max-width: 320px;
 }
 
-/* Apply hover effect to job cards */
 .job:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .job h3 {
     margin: 0 0 10px;
-    color: #2a3d47; /* Dark text for headings */
+    color: #2a3d47;
 }
 
 .job button {
@@ -186,7 +239,7 @@ button {
 }
 
 .job button:hover {
-    background-color: #57a8c7; /* Slightly darker blue for hover */
+    background-color: #57a8c7;
 }
 
 /* Sections */
@@ -203,18 +256,37 @@ h2 {
 
 /* Footer */
 footer {
-    background-color: #2a3d47; /* Darker shade for footer, offering balance */
+    background-color: #2a3d47;
     color: white;
     padding: 20px 0;
     text-align: center;
 }
 
 footer a {
-    color: #6ec1e4; /* Soft teal for links */
+    color: #6ec1e4;
     text-decoration: none;
     margin: 0 10px;
 }
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Responsive Layout Adjustments */
+@media (max-width: 768px) {
+    .dashboard-layout {
+        flex-direction: column;
+    }
+
+    .scrollable-jobs {
+        max-height: none;
+    }
+
+    .dashboard-card {
+        text-align: center;
+    }
+
+    .job {
+        flex: 1 1 100%;
+    }
 }
