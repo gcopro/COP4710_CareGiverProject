@@ -33,8 +33,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $stmt->bind_param("ssss",$firstName,$lastName,$email,$hashPass);
     // Execute the statement
     if ($stmt->execute()) {
-        echo "success";
-        //header("Location: http/localhost/index_web/COP4710_CareGiverProject/frontend/pages/LoginPage/login_page.html");
+        //echo "success";
+        header("Location: http://localhost/index_web/COP4710_CareGiverProject/frontend/pages/LoginPage/login_page.html");
     } else {
         echo "Error: " . $stmt->error;
     }
