@@ -33,11 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($password === $row['password']) {
             $_SESSION['MID'] = $row['MID']; // Store user ID in the session
             header("Location: ../FrontPage/front_page.html");
-            echo "Login successful!";
+            //echo "Login successful!";
             exit();
         } else {
             $error = "Invalid email or password.";
-            echo "bad";
+            //echo "bad";
+            header("Location: ../LoginPage/login_page.html");
         }
     } else {
         $error = "Invalid email or password.";
