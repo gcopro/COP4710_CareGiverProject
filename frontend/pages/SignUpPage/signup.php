@@ -1,11 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "testdb";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname, 3307);
+include('../../../backend/conn.php');
 
 // Check connection
 if ($conn->connect_error) {

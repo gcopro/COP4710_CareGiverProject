@@ -1,14 +1,7 @@
 <?php
 session_start(); // Start the session
 
-// Database connection settings
-$servername = "localhost";
-$username = "root"; // Update with your database username
-$password = ""; // Update with your database password
-$dbname = "testdb";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname, 3307);
+include('../../../backend/conn.php');
 
 // Check connection
 if ($conn->connect_error) {
