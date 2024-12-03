@@ -1,5 +1,6 @@
+
 <?php
-include('../../../backend/conn.php');
+include '../../db.php';
 
 // Set the response header to return JSON
 header('Content-Type: application/json');
@@ -13,20 +14,25 @@ if (!$conn) {
 // Get the parameters from the request
 $hours_range = isset($_GET['hours']) ? $_GET['hours'] : '';
 
-// Initialize the base query
+// Initialize the base query  
+// get the avg score and filter the hours for caregivers even if a care giver has not completed a contract 
 $query = "
-    SELECT cg.cid, m.firstName, m.lastName, AVG(r.Rate) AS average_review_score
+    SELECT cg.cid, m.firstName, m.lastName,(  
+        SELECT IFNULL(AVG(r.Rate),0)
+        FROM contracts c
+        JOIN review r ON c.cno = r.cno
+        WHERE c.cid = cg.cid
+    ) AS average_review_score
     FROM caregiver cg
-    JOIN contracts c ON cg.cid = c.cid
-    JOIN review r ON c.cno = r.cno
     JOIN member m ON cg.mid = m.mid
+    WHERE cg.limitHours IS NOT NULL
 ";
 
 // Initialize an array for the conditions
 $conditions = [];
 
 // Apply hours filter if provided, except when "Any" is selected
-if ($hours_range && $hours_range !== 'Any') {
+if (!empty($hours_range) && $hours_range !== 'Any') {
     if ($hours_range === '0-10') {
         $conditions[] = "cg.limitHours BETWEEN 0 AND 10";
     } elseif ($hours_range === '10-20') {
@@ -40,13 +46,14 @@ if ($hours_range && $hours_range !== 'Any') {
 }
 
 // Add the conditions to the query if any
-if ($conditions) {
+if (!empty($conditions)) {
     // Ensure the WHERE clause is only applied once
-    $query .= " WHERE " . implode(' OR ', $conditions);
+    $query .= " AND " . implode(' OR ', $conditions);
 }
 
 // Group the results by caregiver's id
-$query .= " GROUP BY cg.cid ASC";
+$query .= " GROUP BY cg.cid ORDER BY cg.cid ASC
+";
 
 // Prepare and execute the query
 $stmt = $conn->prepare($query);
@@ -66,6 +73,7 @@ if ($stmt->errno) {
 $result = $stmt->get_result();
 $caregivers = [];
 while ($row = $result->fetch_assoc()) {
+    $row['avg_review_score'] = $row['avg_review_score'] ?? 0;
     $caregivers[] = $row;
 }
 
