@@ -150,11 +150,7 @@ reviewButton.addEventListener('click', () => {
         const reviewValue = reviewInput.value;
         if (reviewValue >= 1 && reviewValue <= 5) {
             // Submit the review (you can handle the submission here or via AJAX)
-<<<<<<< HEAD
-            alert(`Review submitted for Contract# ${contract.Cno}: Rating ${reviewValue}`);
-=======
             window.location.href = `review_contract.php?Cno=${encodeURIComponent(contract.Cno)}&reviewValue=${encodeURIComponent(reviewValue)}`;
->>>>>>> 8ae2804773e11c91d99dc00c1402ad2d9620442e
             
             // Optionally, reset the review input after submission
             reviewInput.value = '';
