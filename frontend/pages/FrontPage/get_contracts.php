@@ -10,7 +10,12 @@ if (isset($_SESSION['MID'])) {
     $response = []; // Initialize response array
 
     // Query to get contracts where MID matches
-    $sql1 = "SELECT Cno, startDate, endDate, status, CID, MID FROM contracts WHERE MID = ?";
+    $sql1 = "
+    SELECT Cno, startDate, endDate, status, CID, MID 
+    FROM contracts 
+    WHERE MID = ? AND status != 4
+";
+
     $stmt1 = $conn->prepare($sql1);
     $stmt1->bind_param("i", $MID);
     $stmt1->execute();
@@ -33,11 +38,12 @@ if (isset($_SESSION['MID'])) {
 
     // Query to get contracts where MID is linked as a caregiver
     $sql2 = "
-        SELECT c.Cno, c.startDate, c.endDate, c.status, c.CID, c.MID
-        FROM contracts c
-        JOIN caregiver cg ON c.CID = cg.CID
-        WHERE cg.MID = ?
-    ";
+    SELECT c.Cno, c.startDate, c.endDate, c.status, c.CID, c.MID
+    FROM contracts c
+    JOIN caregiver cg ON c.CID = cg.CID
+    WHERE cg.MID = ? AND c.status != 4
+";
+
     $stmt2 = $conn->prepare($sql2);
     $stmt2->bind_param("i", $MID);
     $stmt2->execute();
