@@ -2,7 +2,7 @@
 session_start(); // Start the session
 
 // Database connection settings
-include('../../../../backend/conn.php');
+include('../../../backend/conn.php');
 
 // Check connection
 if ($conn->connect_error) {
@@ -19,7 +19,7 @@ if ($Cno) {
 
     if ($stmt->execute()) {
         echo json_encode(["success" => "Contract status updated successfully."]);
-        header("Location: ../front_page.html");
+        header("Location: front_page.html");
     } else {
         echo json_encode(["error" => "Failed to update contract status."]);
     }
