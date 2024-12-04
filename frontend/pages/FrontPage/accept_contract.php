@@ -19,7 +19,7 @@ if ($Cno) {
 
     if ($stmt->execute()) {
         echo json_encode(["success" => "Contract status updated successfully."]);
-        header("Location: ../FrontPage/front_page.html");
+        header("Location: front_page.html");
     } else {
         echo json_encode(["error" => "Failed to update contract status."]);
     }
