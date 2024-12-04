@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Contract</title>
     <link rel="stylesheet" href="style_contract_page.css"> <!-- Link to your CSS file -->
+    <script src="totalize_cost.js" defer></script> <!-- Import the script -->
 </head>
 <body>
     <header>
@@ -24,18 +25,46 @@
             <h2>Create Contract</h2>
             <div class="dashboard-card">
                 <form id="contractForm" class="dashboard-section" method="POST" action="create_contract.php">
+                    <!-- Patient Name -->
                     <div class="filter-group">
                         <label for="patientName">Patient Name</label>
                         <input type="text" id="patientName" name="patientName" placeholder="Enter patient name" required>
                     </div>
+                    <!-- Patient Age -->
                     <div class="filter-group">
                         <label for="patientAge">Patient Age</label>
                         <input type="number" id="patientAge" name="patientAge" placeholder="Enter patient age" min="0" required>
                     </div>
+                    <!-- Start Date -->
+                    <div class="filter-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" id="startDate" name="startDate" required>
+                    </div>
+                    <!-- End Date -->
+                    <div class="filter-group">
+                        <label for="endDate">End Date</label>
+                        <input type="date" id="endDate" name="endDate" required>
+                    </div>
+                    <!-- Hours Per Week -->
+                    <div class="filter-group">
+                        <label for="hoursPerWeek">Hours Per Week</label>
+                        <input type="number" id="hoursPerWeek" name="hoursPerWeek" placeholder="Enter hours per week" min="1" required>
+                    </div>
+                    <!-- Patient Address -->
                     <div class="filter-group">
                         <label for="patientAddress">Patient Address</label>
                         <textarea id="patientAddress" name="patientAddress" placeholder="Enter patient address" rows="4" required></textarea>
                     </div>
+                    <!-- Calculate Button -->
+                    <div class="filter-group">
+                        <button type="button" id="calculateCostButton" class="secondary-button">Calculate Total Cost</button>
+                    </div>
+                    <!-- Total Cost -->
+                    <div class="filter-group">
+                        <label>Total Cost</label>
+                        <p id="totalCostDisplay">CD 0.00 per week</p>
+                    </div>
+                    <!-- Submit Button -->
                     <button type="submit" class="cta-button">Submit Contract</button>
                 </form>                
             </div>

@@ -1,4 +1,4 @@
- document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     fetchContracts();
 
     function fetchContracts() {
@@ -89,12 +89,13 @@ if (contract.status === 0) {
         const acceptButton = document.createElement('button');
         acceptButton.textContent = 'Accept';
         acceptButton.addEventListener('click', () => {
-            alert(`Accepting Contract# ${contract.Cno}`);
+            window.location.href = `accept_contract.php?Cno=${encodeURIComponent(contract.Cno)}`;
+
         });
         const declineButton = document.createElement('button');
         declineButton.textContent = 'Decline';
         declineButton.addEventListener('click', () => {
-            alert(`Declining Contract# ${contract.Cno}`);
+            window.location.href = `delete_contract.php?Cno=${encodeURIComponent(contract.Cno)}`;
         });
         actionCell.appendChild(acceptButton);
         actionCell.appendChild(declineButton);
@@ -103,7 +104,7 @@ if (contract.status === 0) {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.addEventListener('click', () => {
-            alert(`Deleting Contract# ${contract.Cno}`);
+            window.location.href = `delete_contract.php?Cno=${encodeURIComponent(contract.Cno)}`;
         });
         actionCell.appendChild(deleteButton);
     }
@@ -126,12 +127,48 @@ if (contract.status === 0) {
         actionCell.appendChild(viewButton);
     } else {
         // Review button
-        const reviewButton = document.createElement('button');
-        reviewButton.textContent = 'Review';
-        reviewButton.addEventListener('click', () => {
-            alert(`Reviewing Contract# ${contract.Cno}`);
-        });
-        actionCell.appendChild(reviewButton);
+const reviewButton = document.createElement('button');
+reviewButton.textContent = 'Review';
+reviewButton.addEventListener('click', () => {
+    // Check if review fields already exist, if so, clear them before showing new ones
+    if (actionCell.querySelector('input[type="number"]')) {
+        actionCell.innerHTML = ''; // Clear the existing form
+    }
+
+    // Create an input field for the review (integer only)
+    const reviewInput = document.createElement('input');
+    reviewInput.type = 'number';
+    reviewInput.placeholder = '1-5';
+    reviewInput.style.width = '60px'; // Small size for the input
+    reviewInput.min = 1; // Minimum value (optional, adjust as needed)
+    reviewInput.max = 5; // Maximum value (optional, adjust as needed)
+
+    // Create a Submit Review button
+    const submitReviewButton = document.createElement('button');
+    submitReviewButton.textContent = 'Submit Review';
+    submitReviewButton.addEventListener('click', () => {
+        const reviewValue = reviewInput.value;
+        if (reviewValue >= 1 && reviewValue <= 5) {
+            // Submit the review (you can handle the submission here or via AJAX)
+            alert(`Review submitted for Contract# ${contract.Cno}: Rating ${reviewValue}`);
+            
+            // Optionally, reset the review input after submission
+            reviewInput.value = '';
+        } else {
+            alert('Please enter a valid rating between 1 and 5.');
+        }
+    });
+
+    // Add the input field and submit button to the action cell (without a div)
+    actionCell.innerHTML = ''; // Clear the existing action cell content (Review button)
+    actionCell.appendChild(reviewInput);
+    actionCell.appendChild(submitReviewButton);
+});
+
+// Add the Review button to the action cell
+actionCell.appendChild(reviewButton);
+
+
     }
 } else if (contract.status === 3) {
     // Remove button
